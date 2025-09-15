@@ -45,7 +45,4 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 USER appuser
 
-# For dev
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
-# For prod (uncomment later)
-# CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "todo_list.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "todo_list.wsgi:application"]
