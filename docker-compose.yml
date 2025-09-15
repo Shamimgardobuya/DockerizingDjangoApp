@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+        - .env
+
+  django-app:
+    build: .
+    container_name: shamimsg3_todo_list
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+        DJANGO_SECRETE_KEY: ${SECRET_KEY}
+        DATABASE_URL: ${DATABASE_URL}
+        DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
+    env_file:
+      - .env
+    # volumes:
+    #   - .:/app
+
+volumes:
+  postgres_data:

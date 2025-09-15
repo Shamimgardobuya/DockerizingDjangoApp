@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<h1> All Tasks </h1>
+
+  {% for task in tasks %}
+     <div class="col-md-4">
+        <div class="card mb-2">
+
+            {% if task.image %}
+               <img class="card-img-top"  src="{{ task.image.url }}">
+
+            {%  endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ task.title }}</h5>
+                <p class="card-text">{{ task.description }}</p>
+                <a href="{% url 'task_detail' task.pk %}"
+                   class="btn btn-primary">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+  {% endfor %}
+{%  endblock page_content %}
