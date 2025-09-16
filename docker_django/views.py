@@ -4,5 +4,4 @@ from django.http import HttpResponse
 
 
 def docker_lite_message(request):
-    return HttpResponse("Hello students, today we will learn devops basics")
-    
+    return HttpResponse("Hello world, today we will learn devops basics")
