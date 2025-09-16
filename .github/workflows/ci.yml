@@ -2,9 +2,9 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ "docker_lesson" ]
+    branches: [ "feature/devops_lite" ]
   pull_request:
-    branches: [ "docker_lesson" ]
+    branches: [ "feature/devops_lite" ]
 
 jobs:
   build:
